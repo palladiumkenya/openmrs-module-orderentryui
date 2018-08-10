@@ -1,27 +1,27 @@
 <%
     ui.decorateWith("appui", "standardEmrPage")
 
-    ui.includeJavascript("uicommons", "angular.min.js")
-    ui.includeJavascript("uicommons", "angular-app.js")
-    ui.includeJavascript("uicommons", "angular-resource.min.js")
-    ui.includeJavascript("uicommons", "angular-common.js")
-    ui.includeJavascript("uicommons", "angular-ui/ui-bootstrap-tpls-0.11.2.js")
-    ui.includeJavascript("uicommons", "ngDialog/ngDialog.js")
-    ui.includeJavascript("uicommons", "filters/display.js")
-    ui.includeJavascript("uicommons", "filters/serverDate.js")
-    ui.includeJavascript("uicommons", "services/conceptService.js")
-    ui.includeJavascript("uicommons", "services/drugService.js")
-    ui.includeJavascript("uicommons", "services/encounterService.js")
-    ui.includeJavascript("uicommons", "services/orderService.js")
-    ui.includeJavascript("uicommons", "services/session.js")
-    ui.includeJavascript("uicommons", "directives/select-concept-from-list.js")
-    ui.includeJavascript("uicommons", "directives/select-order-frequency.js")
-    ui.includeJavascript("uicommons", "directives/select-drug.js")
+    ui.includeJavascript("orderentryui", "angular.min.js")
+    ui.includeJavascript("orderentryui", "angular-app.js")
+    ui.includeJavascript("orderentryui", "angular-resource.min.js")
+    ui.includeJavascript("orderentryui", "angular-common.js")
+    ui.includeJavascript("orderentryui", "angular-ui/ui-bootstrap-tpls-0.11.2.js")
+    ui.includeJavascript("orderentryui", "ngDialog/ngDialog.js")
+    ui.includeJavascript("orderentryui", "filters/display.js")
+    ui.includeJavascript("orderentryui", "filters/serverDate.js")
+    ui.includeJavascript("orderentryui", "services/conceptService.js")
+    ui.includeJavascript("orderentryui", "services/drugService.js")
+    ui.includeJavascript("orderentryui", "services/encounterService.js")
+    ui.includeJavascript("orderentryui", "services/orderService.js")
+    ui.includeJavascript("orderentryui", "services/session.js")
+    ui.includeJavascript("orderentryui", "directives/select-concept-from-list.js")
+    ui.includeJavascript("orderentryui", "directives/select-order-frequency.js")
+    ui.includeJavascript("orderentryui", "directives/select-drug.js")
     ui.includeJavascript("orderentryui", "order-model.js")
     ui.includeJavascript("orderentryui", "order-entry.js")
     ui.includeJavascript("orderentryui", "drugOrders.js")
 
-    ui.includeCss("uicommons", "ngDialog/ngDialog.min.css")
+    ui.includeCss("orderentryui", "ngDialog/ngDialog.min.css")
     ui.includeCss("orderentryui", "drugOrders.css")
 %>
 <script type="text/javascript">
@@ -40,7 +40,6 @@ ${ ui.includeFragment("appui", "messages", [ codes: [
         "orderentryui.pastAction.DISCONTINUE"
 ] ])}
 
-${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient ]) }
 
 <div id="drug-orders-app" ng-controller="DrugOrdersCtrl" ng-init='init()'>
     <div class="ui-tabs">
@@ -141,7 +140,7 @@ ${ ui.includeFragment("coreapps", "patientHeader", [ patient: patient ]) }
                 <div class="actions">
                     <div class="signature">
                         Signing as ${ ui.format(sessionContext.currentProvider) } on (auto-generated timestamp)
-                        <img ng-show="loading" src="${ ui.resourceLink("uicommons", "images/spinner.gif") }"/>
+                        <img ng-show="loading" src="${ ui.resourceLink("orderentryui", "images/spinner.gif") }"/>
                     </div>
                     <button class="confirm right" ng-disabled="loading" ng-click="signAndSaveDraftDrugOrders()">Sign and Save</button>
                     <button class="cancel" ng-click="cancelAllDraftDrugOrders()">
