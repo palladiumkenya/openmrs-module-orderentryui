@@ -62,7 +62,7 @@ angular.module('uicommons.common', []).
 
     run(['$rootScope', '$window', function ($rootScope, $window) {
         $rootScope.$on('event:auth-loginRequired', function () {
-            if (confirm(emr.message("uicommons.notLoggedIn", "The operation cannot be completed, because you are no longer logged in. Do you want to go to login page?"))) {
+            if (confirm(emrJs.message("uicommons.notLoggedIn", "The operation cannot be completed, because you are no longer logged in. Do you want to go to login page?"))) {
                 window.location = "/" + OPENMRS_CONTEXT_PATH + "/login.htm";
             }
         });

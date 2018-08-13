@@ -52,7 +52,7 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
             if (!replacementOrder) {
                 return "";
             }
-            return emr.message("orderentryui.pastAction." + replacementOrder.action) + ", " + serverDateFilter(replacementOrder.dateActivated);
+            return emrJs.message("orderentryui.pastAction." + replacementOrder.action) + ", " + serverDateFilter(replacementOrder.dateActivated);
         }
     }]).
 
@@ -154,7 +154,7 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
                     // TODO upgrade to angular 1.3 and work on form validation
                     $scope.newOrderForm.$setUntouched();
                 } else {
-                    emr.errorMessage("Invalid");
+                    emrJs.errorMessage("Invalid");
                 }
             }
 
@@ -208,7 +208,7 @@ angular.module('drugOrders', ['orderService', 'encounterService', 'uicommons.fil
                     .$promise.then(function(result) {
                         location.href = location.href;
                     }, function(errorResponse) {
-                        emr.errorMessage(errorResponse.data.error.message);
+                    emrJs.errorMessage(errorResponse.data.error.message);
                         $scope.loading = false;
                     });
             }

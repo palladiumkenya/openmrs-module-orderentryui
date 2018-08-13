@@ -7,6 +7,7 @@
     ui.includeJavascript("orderentryui", "angular-common.js")
     ui.includeJavascript("orderentryui", "angular-ui/ui-bootstrap-tpls-0.11.2.js")
     ui.includeJavascript("orderentryui", "ngDialog/ngDialog.js")
+    ui.includeJavascript("orderentryui", "emr.js")
     ui.includeJavascript("orderentryui", "filters/display.js")
     ui.includeJavascript("orderentryui", "filters/serverDate.js")
     ui.includeJavascript("orderentryui", "services/conceptService.js")
@@ -20,6 +21,7 @@
     ui.includeJavascript("orderentryui", "order-model.js")
     ui.includeJavascript("orderentryui", "order-entry.js")
     ui.includeJavascript("orderentryui", "drugOrders.js")
+
 
     ui.includeCss("orderentryui", "ngDialog/ngDialog.min.css")
     ui.includeCss("orderentryui", "drugOrders.css")

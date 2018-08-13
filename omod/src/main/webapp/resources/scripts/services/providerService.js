@@ -19,7 +19,7 @@ angular.module('providerService', ['ngResource','uicommons.common'])
                 return Provider.query(params).$promise
                     .then(function(res) {
                         return res.results;
-                    }, emr.handleNotLoggedIn);
+                    }, emrJs.handleNotLoggedIn);
             }
         }
     });

@@ -19,7 +19,7 @@ angular.module('customDatatypeService', ['ngResource', 'uicommons.common'])
                 return CustomDatatype.query(params).$promise
                     .then(function(res) {
                         return res.results;
-                    }, emr.handleNotLoggedIn);
+                    }, emrJs.handleNotLoggedIn);
             }
         }
     });

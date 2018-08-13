@@ -14,13 +14,13 @@ angular.module('uicommons.widget.select-concept-from-list', [ 'ui.bootstrap' ])
             },
             link: function($scope, element, attrs) {
                 $scope.required = attrs.hasOwnProperty('required'); // required attribute has no value
-                $scope.inputId = emr.domId($scope.id, 'sel-concept', 'input');
+                $scope.inputId = emrJs.domId($scope.id, 'sel-concept', 'input');
                 $scope.size = attrs.size ? attrs.size : 40;
 
                 var options = [];
                 _.each($scope.concepts(), function(concept) {
                     _.each(concept.names, function(name) {
-                        if (emr.isCompatibleWithSessionLocale(name.locale)) {
+                        if (emrJs.isCompatibleWithSessionLocale(name.locale)) {
                             var display = name.name === concept.display ?
                                 name.name :
                                 name.name + " &rarr; " + concept.display;
@@ -43,12 +43,12 @@ angular.module('uicommons.widget.select-concept-from-list', [ 'ui.bootstrap' ])
                 }
 
                 $scope.startsWith = function(actual, expected) {
-                    return emr.startsWithIgnoreCase(actual, expected);
+                    return emrJs.startsWithIgnoreCase(actual, expected);
                 }
 
                 $scope.onSelect = function($item, $model, $label) {
                     $timeout(function() {
-                        emr.focusNextElement(element.closest('body'), element.find('#'+$scope.inputId));
+                        emrJs.focusNextElement(element.closest('body'), element.find('#'+$scope.inputId));
                     }, 10);
                 }
             },

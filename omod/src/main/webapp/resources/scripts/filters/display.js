@@ -15,7 +15,7 @@ angular.module('uicommons.filters').
                 input = input.uuid;
             }
             var code = prefix ? prefix + input : input;
-            return emr.message(code, input);
+            return emrJs.message(code, input);
         }
 
         return function(input, prefix) {

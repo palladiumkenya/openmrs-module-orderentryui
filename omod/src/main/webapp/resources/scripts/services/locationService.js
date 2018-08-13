@@ -20,7 +20,7 @@ angular.module('locationService', ['ngResource', 'uicommons.common'])
                 return Location.query(params).$promise
                     .then(function(res) {
                         return res.results;
-                    }, emr.handleNotLoggedIn);
+                    }, emrJs.handleNotLoggedIn);
             },
 
             // if location has uuid property this will update, else it will create new

@@ -12,7 +12,7 @@ angular.module('uicommons.widget.select-drug', [ 'drugService', 'ui.bootstrap' ]
             },
             link: function($scope, element, attrs) {
                 $scope.required = attrs.hasOwnProperty('required'); // required attribute has no value
-                $scope.inputId = emr.domId($scope.id, 'sel-drug', 'input');
+                $scope.inputId = emrJs.domId($scope.id, 'sel-drug', 'input');
                 $scope.size = attrs.size ? attrs.size : 40;
 
                 $scope.search = function(term) {
@@ -41,7 +41,7 @@ angular.module('uicommons.widget.select-drug', [ 'drugService', 'ui.bootstrap' ]
                         $scope.onSelectCallback({ '$item':$item, '$model':$model, '$label':$label });
                     } else {
                         $timeout(function() {
-                            emr.focusNextElement(element.closest('body'), element.find('#'+$scope.inputId));
+                            emrJs.focusNextElement(element.closest('body'), element.find('#'+$scope.inputId));
                         }, 10);
                     }
                 }

@@ -1,4 +1,4 @@
-var emr = (function($) {
+var emrJs = (function($) {
 
     var accentMap = {
         "ä": "a", "á": "a", "à": "a", "â": "a", "ã": "a",
@@ -54,7 +54,7 @@ var emr = (function($) {
             if (!window.messages) {
                 window.messages = {};
             }
-            emr.getFragmentActionWithCallback("uicommons", "messages", "get", { codes: codes }, function(response) {
+            emrJs.getFragmentActionWithCallback("uicommons", "messages", "get", { codes: codes }, function(response) {
                 for (var code in response) {
                     window.messages[code] = response[code];
                 }
@@ -68,7 +68,7 @@ var emr = (function($) {
             if (!window.globalProperties) {
                 window.globalProperties = {};
             }
-            emr.getFragmentActionWithCallback("uicommons", "globalProperties", "get", {properties: properties}, function(response) {
+            emrJs.getFragmentActionWithCallback("uicommons", "globalProperties", "get", {properties: properties}, function(response) {
                 for (var property in response) {
                     window.globalProperties[property] = response[property];
                 }
@@ -114,18 +114,18 @@ var emr = (function($) {
                         if(foundMessage == false){
                             foundMessage = true;
                         }
-                        emr.errorMessage(errMessage);
+                        emrJs.errorMessage(errMessage);
                     }
                 });
             }
 
             if(foundMessage == false) {
-                emr.errorMessage(this.message("uicommons.generalError.message", "An error has occurred"));
+                emrJs.errorMessage(this.message("uicommons.generalError.message", "An error has occurred"));
             }
         },
 
         serverGeneralErrorMessage: function() {
-            emr.errorMessage(this.message("uicommons.generalError.message", "An error has occurred"));
+            emrJs.errorMessage(this.message("uicommons.generalError.message", "An error has occurred"));
         },
 
         navigateTo: function(opts) {
@@ -164,7 +164,7 @@ var emr = (function($) {
         getFragmentActionWithCallback: function(providerName, fragmentName, actionName, options, callback, errorCallback) {
             if (!errorCallback) {
                 errorCallback = function(xhr) {
-                    emr.handleError(xhr);
+                    emrJs.handleError(xhr);
                 };
             }
             var url = this.fragmentActionLink(providerName, fragmentName, actionName, options);
@@ -195,33 +195,33 @@ var emr = (function($) {
                     });
                 })
                 .error(function(err) {
-                    emr.errorMessage(err);
+                    emrJs.errorMessage(err);
                 });
         },
 
         successMessage: function(message) {
             jqObject.toastmessage( 'showToast', { type: 'success',
                                               position: 'top-right',
-                                              text:  emr.message(message) } );
+                                              text:  emrJs.message(message) } );
         },
 
         errorMessage: function(message) {
             jqObject.toastmessage( 'showToast', { type: 'error',
                                               position: 'top-right',
                                               sticky: true,
-                                              text:  emr.message(message) } );
+                                              text:  emrJs.message(message) } );
         },
 
         alertMessage: function(message) {
             jqObject.toastmessage( 'showToast', { type: 'alert',
                                               position: 'top-right',
-                                              text:  emr.message(message) } );
+                                              text:  emrJs.message(message) } );
         },
 
         successAlert: function(message, options) {
             jqObject.toastmessage( 'showToast', { type: 'success',
                 position: 'top-right',
-                text:  emr.message(message),
+                text:  emrJs.message(message),
                 stayTime: 8000,
                 close: options && options.close ? options.close : null } );
         },
@@ -229,23 +229,23 @@ var emr = (function($) {
         errorAlert: function(message, options) {
             jqObject.toastmessage( 'showToast', { type: 'error',
                 position: 'top-right',
-                text:  emr.message(message),
+                text:  emrJs.message(message),
                 stayTime: 8000,
                 close: options && options.close ? options.close : null } )
         },
 
         handleError: function(xhr) {
-            emr.handleParsedError(jq.parseJSON(xhr.responseText), xhr.status);
+            emrJs.handleParsedError(jq.parseJSON(xhr.responseText), xhr.status);
         },
 
         handleParsedError: function(data, status) {
-            if (!emr.redirectOnAuthenticationFailure(status)) {
+            if (!emrJs.redirectOnAuthenticationFailure(status)) {
                 if (data.globalErrors) {
-                    emr.errorAlert(data.globalErrors[0]);
+                    emrJs.errorAlert(data.globalErrors[0]);
                 } else if (data.error.message) {
-                    emr.errorAlert(data.error.message);
+                    emrJs.errorAlert(data.error.message);
                 } else {
-                    emr.errorAlert("Error!");
+                    emrJs.errorAlert("Error!");
                 }
             }
         },
@@ -375,12 +375,12 @@ var emr = (function($) {
 				}
 			};
 
-			return jq.ajax(settings).fail(emr.handleNotLoggedIn);
+			return jq.ajax(settings).fail(emrJs.handleNotLoggedIn);
 		},
 
         handleNotLoggedIn: function(jqXHR) {
            if (jqXHR.status == 401 || jqXHR.status == 404) {
-               if (confirm(emr.message("uicommons.notLoggedIn", "The operation cannot be completed, because you are no longer logged in. Do you want to go to login page?"))) {
+               if (confirm(emrJs.message("uicommons.notLoggedIn", "The operation cannot be completed, because you are no longer logged in. Do you want to go to login page?"))) {
                    window.location = "/" + OPENMRS_CONTEXT_PATH + "/login.htm";
                }
            }
@@ -421,7 +421,7 @@ var emr = (function($) {
 
         findConceptWithMapping: function(conceptArray, sourceName, code) {
             return _.find(conceptArray, function(concept) {
-                return emr.hasMapping(concept, sourceName, code);
+                return emrJs.hasMapping(concept, sourceName, code);
             });
         },
 

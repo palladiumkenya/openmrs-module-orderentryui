@@ -64,9 +64,9 @@
                 }
                 // if drug.dosageForm is Tablet => route = Oral, dose = Tablet
                 var sameDoseUnitAsForm = false;
-                if (emr.hasMapping(order.drug.dosageForm, "SNOMED CT", OpenMRS.snomedCodes.tablet)) {
+                if (emrJs.hasMapping(order.drug.dosageForm, "SNOMED CT", OpenMRS.snomedCodes.tablet)) {
                     if (!order.route) {
-                        order.route = emr.findConceptWithMapping(orderContext.config.drugRoutes, "SNOMED CT", OpenMRS.snomedCodes.oralAdministration);
+                        order.route = emrJs.findConceptWithMapping(orderContext.config.drugRoutes, "SNOMED CT", OpenMRS.snomedCodes.oralAdministration);
                     }
                     sameDoseUnitAsForm = true;
                 }

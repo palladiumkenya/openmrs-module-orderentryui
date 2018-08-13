@@ -25,7 +25,7 @@
 
     <div class="info-body active-drug-orders">
         <% if (!activeDrugOrders) { %>
-            ${ ui.message("emr.none") }
+            ${ ui.message("emrJs.none") }
         <% } else { %>
 
             <% careSettings.each { careSetting -> %>

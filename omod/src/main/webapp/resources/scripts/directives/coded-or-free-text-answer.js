@@ -3,8 +3,8 @@ angular.module('uicommons.widget.coded-or-free-text-answer', [ 'conceptSearchSer
     .directive('codedOrFreeTextAnswer', ['ConceptSearchService', function(ConceptSearchService) {
 
         function isExactMatch(candidate, query) {
-            query = emr.stripAccents(query.toLowerCase());
-            return candidate.conceptName && emr.stripAccents(candidate.conceptName.display.toLowerCase()) === query;
+            query = emrJs.stripAccents(query.toLowerCase());
+            return candidate.conceptName && emrJs.stripAccents(candidate.conceptName.display.toLowerCase()) === query;
         }
 
         return {
@@ -61,7 +61,7 @@ angular.module('uicommons.widget.coded-or-free-text-answer', [ 'conceptSearchSer
                     
                     if (result.concept) {
                     	var key = "ui.i18n.Concept.name." + result.concept.uuid;
-	                    var value = emr.message(key);
+	                    var value = emrJs.message(key);
 	                    if (value != key) {
 	                    	return value;
 	                    }
@@ -74,7 +74,7 @@ angular.module('uicommons.widget.coded-or-free-text-answer', [ 'conceptSearchSer
                             if (conceptOnly) {
                                 return result.conceptName.display + " → " + result.concept.display;
                             } else {
-                                return result.conceptName.display + " (" + emr.message("uicommons.conceptSearch.synonymFor", "→") + " " + result.concept.display + ")";
+                                return result.conceptName.display + " (" + emrJs.message("uicommons.conceptSearch.synonymFor", "→") + " " + result.concept.display + ")";
                             }
                         }
                     }
