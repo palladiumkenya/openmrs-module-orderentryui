@@ -1,27 +1,22 @@
 package org.openmrs.module.orderentryui.fragment.controller.patientdashboard;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.openmrs.*;
+import org.openmrs.Order;
+import org.openmrs.OrderType;
+import org.openmrs.Patient;
 import org.openmrs.api.OrderService;
-import org.openmrs.api.OrderSetService;
 import org.openmrs.api.PatientService;
-import org.openmrs.ui.framework.UiUtils;
 import org.openmrs.ui.framework.annotation.SpringBean;
 import org.openmrs.ui.framework.fragment.FragmentConfiguration;
 import org.openmrs.ui.framework.fragment.FragmentModel;
 
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ActiveDrugOrdersFragmentController {
 
     public void controller(FragmentConfiguration config,
                            @SpringBean("patientService") PatientService patientService,
-                           @SpringBean("") OrderService orderService,
+                           @SpringBean("orderService") OrderService orderService,
                            FragmentModel model) throws Exception {
         // unfortunately in OpenMRS 2.1 the coreapps patient page only gives us a patientId for this extension point
         // (not a patient) but I assume we'll fix this to pass patient, so I'll code defensively
@@ -41,7 +36,6 @@ public class ActiveDrugOrdersFragmentController {
 
         model.addAttribute("patient", patient);
         model.addAttribute("activeDrugOrders", activeDrugOrders);
-
     }
 
 }
